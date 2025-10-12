@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -21,17 +21,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Install Node. Do NOT enable cache here; pnpm isn’t installed yet.
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
-      # Do NOT set "version" here; it will read from package.json "packageManager"
+      # Install pnpm (reads the version from package.json: "packageManager")
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
+
+      # Proper pnpm cache: compute store path and cache it
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Restore pnpm store from cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
@@ -48,11 +61,11 @@ jobs:
           path: out
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

@@ -35,7 +35,7 @@ export function Header() {
       <nav className="container mx-auto px-4 md:px-12 flex justify-between items-center">
         <Link href="#home" className="flex items-center gap-3">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-ZMQx5pXDZEZmSeO8YM0wVCeMS0hAAn.jpg"
+            src="logo.png"
             alt="Elite Detailing Logo"
             width={50}
             height={50}

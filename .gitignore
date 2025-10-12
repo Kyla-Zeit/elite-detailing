@@ -1,7 +1,3 @@
-node_modules
-
-# Next build
-.next/
-out/
+# Ignore Next.js build output and static export directory
 .next
 out

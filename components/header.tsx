@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
-// Static import = no broken logo under basePath/assetPrefix
+// Static imports = basePath-safe on GitHub Pages
 import LogoPng from "@/public/logo.png";
+import Texture from "@/public/texture.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,22 +29,15 @@ export function Header() {
     { href: "#contact", label: "Contact" }
   ];
 
-  // Respect basePath in production (GitHub Pages)
-  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const textureUrl = `url('${prefix}/texture.png')`;
-
-  // Keep the bar readable; increase overlay slightly on scroll
+  // Visible texture and readable text
   const overlayAlpha = isScrolled ? 0.72 : 0.6;
-
-  // Shared textured background style
   const texturedBg: React.CSSProperties = {
-    backgroundImage: `linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})), ${textureUrl}`,
+    backgroundImage: `linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})), url('${Texture.src}')`,
     backgroundRepeat: "repeat",
-    backgroundSize: "256px 256px", // visible grain, not blurry “cover”
+    backgroundSize: "256px 256px",
     backgroundPosition: "top left",
-    backgroundBlendMode: "overlay", // pulls out highlights in the texture
-    // Give the texture a tiny punch so it doesn’t look like plain black
-    filter: "contrast(112%) brightness(103%)",
+    backgroundBlendMode: "overlay",
+    filter: "contrast(112%) brightness(103%)"
   };
 
   return (
@@ -95,7 +89,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer (also textured to match) */}
+      {/* Mobile Drawer (also textured) */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
           isMenuOpen ? "max-h-96" : "max-h-0"

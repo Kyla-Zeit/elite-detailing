@@ -57,9 +57,6 @@ export function Header() {
               className="rounded-none" // or rounded if you really want
               priority
             />
-            <span className="text-xl md:text-2xl font-extrabold tracking-wide text-[#00ff88] drop-shadow-[0_0_12px_rgba(0,255,136,0.45)]">
-              ELITE DETAILING
-            </span>
           </Link>
 
           {/* Desktop Nav */}

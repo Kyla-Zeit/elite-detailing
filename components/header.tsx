@@ -28,21 +28,14 @@ export function Header() {
     { href: "#contact", label: "Contact" }
   ];
 
-  const overlayAlpha = isScrolled ? 0.72 : 0.62;
-  const texturedBg: React.CSSProperties = {
-    backgroundImage: `linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})), url('${Texture.src}')`,
-    backgroundRepeat: "repeat",
-    backgroundSize: "256px 256px",
-    backgroundBlendMode: "overlay",
-    filter: "contrast(112%) brightness(104%)"
-  };
+
 
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? "py-3 md:py-4" : "py-4 md:py-5"
       }`}
-      style={texturedBg}
+
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
@@ -88,7 +81,6 @@ export function Header() {
         className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
           isMenuOpen ? "max-h-96" : "max-h-0"
         }`}
-        style={texturedBg}
       >
         <nav className="container mx-auto px-4 py-2">
           <ul className="flex flex-col divide-y divide-white/10">

@@ -6,8 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
-// basePath-safe static imports
-import LogoPng from "@/public/logo.png";
+import LogoPng from "@/public/logo.png";   // must be TRANSPARENT for this option
 import Texture from "@/public/texture.png";
 
 export function Header() {
@@ -30,7 +29,6 @@ export function Header() {
     { href: "#contact", label: "Contact" }
   ];
 
-  // Navbar: keep your textured bar
   const overlayAlpha = isScrolled ? 0.72 : 0.62;
   const texturedBg: React.CSSProperties = {
     backgroundImage: `linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})), url('${Texture.src}')`,
@@ -38,14 +36,6 @@ export function Header() {
     backgroundSize: "256px 256px",
     backgroundBlendMode: "overlay",
     filter: "contrast(112%) brightness(104%)"
-  };
-
-  // Black chip behind the logo
-  const logoChipBlack: React.CSSProperties = {
-    backgroundColor: "#000",
-    borderRadius: 18,
-    padding: 6,
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 6px 18px rgba(0,0,0,0.35)"
   };
 
   return (
@@ -57,18 +47,16 @@ export function Header() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand */}
+          {/* Brand: raw logo only */}
           <Link href="#home" className="flex items-center gap-3">
-            <div style={logoChipBlack}>
-              <Image
-                src={LogoPng}
-                alt="Elite Detailing Logo"
-                width={50}
-                height={50}
-                className="rounded-[14px]"
-                priority
-              />
-            </div>
+            <Image
+              src={LogoPng}
+              alt="Elite Detailing Logo"
+              width={50}
+              height={50}
+              className="rounded-none" // or rounded if you really want
+              priority
+            />
             <span className="text-xl md:text-2xl font-extrabold tracking-wide text-[#00ff88] drop-shadow-[0_0_12px_rgba(0,255,136,0.45)]">
               ELITE DETAILING
             </span>

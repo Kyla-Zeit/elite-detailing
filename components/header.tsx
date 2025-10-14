@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 
 import LogoPng from "@/public/logo.jpg";   // must be TRANSPARENT for this option
-import Texture from "@/public/texture.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

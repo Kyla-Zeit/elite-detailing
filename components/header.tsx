@@ -30,23 +30,22 @@ export function Header() {
     { href: "#contact", label: "Contact" }
   ];
 
-  // Navbar texture (no extra tint; pure match)
-  const overlayAlpha = isScrolled ? 0.75 : 0.64;
-  const texturedBg: React.CSSProperties = {
-    backgroundImage: `linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})), url('${Texture.src}')`,
-    backgroundRepeat: "repeat",
-    backgroundSize: "256px 256px",
-    backgroundPosition: "top left",
-    backgroundBlendMode: "overlay",
-    filter: "contrast(112%) brightness(104%)"
-  };
+  // Teal-charcoal tint to match the logo's background plate
+  const overlayAlpha = isScrolled ? 0.72 : 0.62; // black overlay
+  const tintAlpha    = isScrolled ? 0.28 : 0.22; // teal tint
+  const tintHex      = "#0f1e1c";                // cold teal-charcoal
 
-  // Logo chip uses the exact same style so it visually merges with the bar
-  const logoChip: React.CSSProperties = {
-    ...texturedBg,
-    borderRadius: 18,
-    padding: 6,
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 6px 18px rgba(0,0,0,0.35)"
+  const texturedBg: React.CSSProperties = {
+    backgroundImage: `
+      linear-gradient(${hexToRgba(tintHex, tintAlpha)}, ${hexToRgba(tintHex, tintAlpha)}),
+      linear-gradient(rgba(0,0,0,${overlayAlpha}), rgba(0,0,0,${overlayAlpha})),
+      url('${Texture.src}')
+    `,
+    backgroundRepeat: "repeat, no-repeat, repeat",
+    backgroundSize: "256px 256px, cover, 256px 256px",
+    backgroundPosition: "top left, center, top left",
+    backgroundBlendMode: "multiply, overlay",
+    filter: "contrast(112%) brightness(104%)"
   };
 
   return (
@@ -58,18 +57,16 @@ export function Header() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand on a matching “chip” */}
+          {/* Brand */}
           <Link href="#home" className="flex items-center gap-3">
-            <div style={logoChip}>
-              <Image
-                src={LogoPng}
-                alt="Elite Detailing Logo"
-                width={50}
-                height={50}
-                className="rounded-[14px]"
-                priority
-              />
-            </div>
+            <Image
+              src={LogoPng}
+              alt="Elite Detailing Logo"
+              width={50}
+              height={50}
+              className="rounded-[14px]"
+              priority
+            />
             <span className="text-xl md:text-2xl font-extrabold tracking-wide text-[#00ff88] drop-shadow-[0_0_12px_rgba(0,255,136,0.45)]">
               ELITE DETAILING
             </span>
@@ -100,7 +97,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer (same texture) */}
+      {/* Mobile Drawer (same texture/tint) */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
           isMenuOpen ? "max-h-96" : "max-h-0"
@@ -125,4 +122,14 @@ export function Header() {
       </div>
     </header>
   );
+}
+
+function hexToRgba(hex: string, alpha = 1) {
+  const h = hex.replace("#", "");
+  const v = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
+  const bigint = parseInt(v, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
-import LogoPng from "@/public/logo.png";   // must be TRANSPARENT for this option
+import LogoPng from "@/public/logo.jpg";   // must be TRANSPARENT for this option
 import Texture from "@/public/texture.png";
 
 export function Header() {

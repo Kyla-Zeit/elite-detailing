@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
-import LogoPng from "@/public/logo.jpg";   // must be TRANSPARENT for this option
+import LogoPng from "@/public/logo2.png";   // must be TRANSPARENT for this option
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

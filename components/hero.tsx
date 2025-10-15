@@ -15,7 +15,7 @@ import LogoBg from "@/public/bg2.png";     // background artwork
 // === Quick knobs ===
 const COVER_SCALE = 1.2;   // background zoom to avoid edges on ultra-wide
 const BG_OPACITY  = 0.36;  // visibility of the background image
-const LOGO_OPACITY = 0.1; // logo accent, a touch quieter
+const LOGO_OPACITY = 0.9; // logo accent, a touch quieter
 
 export function Hero() {
   // Legibility overlay with a faint brand tint (darker so the title pops)

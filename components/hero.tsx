@@ -2,48 +2,53 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
-import LogoBg from "@/public/bg1.png"; // your neon car on black
+
+// Square logo artwork on black
+import LogoBg from "@/public/bg1.png";
+
+/**
+ * Tweak these without touching the rest of the code.
+ * - COVER_SCALE: scale up a bit to avoid letterboxing on ultra-wide screens.
+ * - BG_OPACITY: how visible the artwork is behind the overlay.
+ */
+const COVER_SCALE = 1.25; // 1.0 = exact cover, 1.25 = zoom-in a touch
+const BG_OPACITY = 0.28;  // 0.06–0.40 depending how loud you want it
 
 export function Hero() {
-  // Make the background LOGO visible
-  const bgLogo: CSSProperties = {
-    backgroundColor: "#000",
-    backgroundImage: `url('${LogoBg.src}')`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "min(95%, 1200px)", // bigger
-    opacity: 0.28,                      // was 0.12 — turn it up
-    // punch the green lines so they read behind the overlay
-    filter: "brightness(1.35) contrast(1.35) saturate(1.15)"
-  };
-
-  // Ease up the black overlay so you don’t bury the art
+  // Legibility overlay with a faint brand tint
   const overlay: CSSProperties = {
     background:
-      "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.10), rgba(0,0,0,0.55) 58%, rgba(0,0,0,0.78))"
-  };
-
-  // Optional: subtle green glow over the center to tie brand color
-  const brandGlow: CSSProperties = {
-    background:
-      "radial-gradient(circle at 50% 48%, rgba(0,255,136,0.18), rgba(0,255,136,0) 40%)",
-    mixBlendMode: "screen",
-    pointerEvents: "none"
+      "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.10), rgba(0,0,0,0.55) 58%, rgba(0,0,0,0.82))"
   };
 
   return (
     <section
       id="home"
-      className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden"
+      className="relative h-[90vh] md:h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden bg-black"
     >
-      {/* Background logo */}
-      <div aria-hidden className="absolute inset-0" style={bgLogo} />
-      {/* Legibility overlay */}
+      {/* Full-bleed image layer */}
+      <div className="absolute inset-0">
+        <Image
+          src={LogoBg}
+          alt=""
+          priority
+          fill
+          // Cover = fill the area completely, cropping as needed (no letterboxing)
+          className="object-cover"
+          // Make the lines pop a bit and scale to avoid edges showing on ultra-wide
+          style={{
+            opacity: BG_OPACITY,
+            transform: `scale(${COVER_SCALE})`,
+            filter: "brightness(1.35) contrast(1.35) saturate(1.1)",
+          }}
+        />
+      </div>
+
+      {/* Overlay for readability */}
       <div aria-hidden className="absolute inset-0" style={overlay} />
-      {/* Subtle on-brand glow */}
-      <div aria-hidden className="absolute inset-0" style={brandGlow} />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">

@@ -27,9 +27,7 @@ export function Header() {
     { href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact" }
   ];
-
-
-
+  
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${

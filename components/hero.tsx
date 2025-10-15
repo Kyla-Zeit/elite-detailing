@@ -15,7 +15,7 @@ import LogoBg from "@/public/bg2.png";     // background artwork
 // === Quick knobs ===
 const COVER_SCALE = 1.2;   // background zoom to avoid edges on ultra-wide
 const BG_OPACITY  = 0.36;  // visibility of the background image
-const LOGO_OPACITY = 0.32; // visibility of the logo accent
+const LOGO_OPACITY = 0.28; // logo accent, a touch quieter
 
 export function Hero() {
   // Legibility overlay with a faint brand tint (darker so the title pops)
@@ -24,7 +24,7 @@ export function Hero() {
       "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.05), rgba(0,0,0,0.52) 60%, rgba(0,0,0,0.78))"
   };
 
-  // Inject Ultra just for the H1 by setting --font-title on the element
+  // Inject Ultra only for the H1 via a CSS var consumed by .ed-title
   const titleFontVar = { ["--font-title" as any]: ultra.style.fontFamily } as CSSProperties;
 
   return (
@@ -68,7 +68,7 @@ export function Hero() {
                 height: "auto",
                 opacity: LOGO_OPACITY,
                 filter:
-                  "saturate(0.7) brightness(1.05) drop-shadow(0 10px 28px rgba(0,255,136,.25))",
+                  "saturate(0.65) brightness(1.02) drop-shadow(0 8px 24px rgba(0,255,136,.2))",
               }}
             />
           </div>
@@ -77,7 +77,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <h1
               style={titleFontVar}
-              className="ed-title ed-title-soft mb-6 text-[clamp(2.75rem,6.5vw,6rem)]"
+              className="ed-title ed-title-muted mb-6 text-[clamp(2.25rem,5.2vw,5rem)]"
             >
               ELITE DETAILING
             </h1>

@@ -37,7 +37,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-    --brand-neon: #00ff88; /* single source of truth */
+  --brand-neon: #00ff88;     /* already added earlier */
+  --hero-logo-opacity: .55;  /* crisp layer intensity (0–1) */
+  --hero-logo-glow: .38;     /* glow layer intensity (0–1) */
 }
 
 .dark {

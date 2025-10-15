@@ -15,7 +15,7 @@ import LogoBg from "@/public/bg1.png";
  * - BG_OPACITY: how visible the artwork is behind the overlay.
  */
 const COVER_SCALE = 1.25; // 1.0 = exact cover, 1.25 = zoom-in a touch
-const BG_OPACITY = 0.28;  // 0.06–0.40 depending how loud you want it
+const BG_OPACITY = 0.40;  // 0.06–0.40 depending how loud you want it
 
 export function Hero() {
   // Legibility overlay with a faint brand tint

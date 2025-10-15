@@ -19,11 +19,10 @@ const BG_OPACITY = 0.40;  // 0.06–0.40 depending how loud you want it
 
 export function Hero() {
   // Legibility overlay with a faint brand tint
-// BRIGHT
-/**const overlay = {
+const overlay: CSSProperties = {
   background:
-    "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.06), rgba(0,0,0,0.32) 62%, rgba(0,0,0,0.66))"
-};**/
+    "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.08), rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.72))"
+};
 
   return (
     <section
@@ -49,7 +48,7 @@ export function Hero() {
       </div>
 
       {/* Overlay for readability */}
-      <div aria-hidden className="absolute inset-0"  />
+      <div aria-hidden className="absolute inset-0" style={overlay} />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">

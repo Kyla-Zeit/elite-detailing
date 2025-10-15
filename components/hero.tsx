@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
 
 // Square logo artwork on black
-import LogoBg from "@/public/bg1.png";
+import LogoBg from "@/public/bg2.png";
 
 /**
  * Tweak these without touching the rest of the code.

@@ -160,7 +160,7 @@
   width: var(--logo-size);
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%) rotate(var(--logo-rotate)) translateY(var(--logo-y));
-  background: url("/logo2.png") center / contain no-repeat;
+  background: url("@/public/logo2.png") center / contain no-repeat;
   opacity: var(--logo-opacity);
   filter: drop-shadow(0 6px 28px rgba(0, 255, 136, 0.35));
   pointer-events: none;

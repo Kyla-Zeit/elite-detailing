@@ -151,21 +151,27 @@
   section[id] { scroll-margin-top: 5.5rem; }
 }
 
-/* Ultra, but civilized */
+/* === Elite Detailing title style (Bebas Neue) === */
 .ed-title {
   font-family: var(--font-title), "Ultra", "Rockwell", serif;
   text-transform: uppercase;
-  letter-spacing: 0.02em;         /* breathe a little */
-  line-height: 0.92;
+  letter-spacing: 0.01em;        /* slight positive spacing suits condensed faces */
+  color: #00ff88;
+  text-shadow:
+    0 3px 0 rgba(0, 61, 47, 0.75),
+    0 0 14px rgba(0, 255, 136, 0.22),
+    0 0 30px rgba(0, 255, 136, 0.16);
+  -webkit-text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  line-height: 0.94;
 }
 
-/* toned-down styling */
-.ed-title-muted {
-  color: #85ffc8;                 /* softer mint */
+/* Softer version of the hero title (kept for compatibility) */
+.ed-title-soft {
   text-shadow:
-    0 2px 0 rgba(0, 61, 47, 0.45),
-    0 0 10px rgba(0, 255, 136, 0.16);
-  -webkit-text-stroke: 0.25px rgba(0, 61, 47, 0.35);
-  text-stroke: 0.25px rgba(0, 61, 47, 0.35);
-  filter: saturate(0.9) brightness(0.98);
+    0 3px 0 rgba(0, 61, 47, 0.75),
+    0 0 14px rgba(0, 255, 136, 0.22),
+    0 0 30px rgba(0, 255, 136, 0.16);
+  -webkit-text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  text-stroke: 0.5px rgba(0, 61, 47, 0.5);
 }

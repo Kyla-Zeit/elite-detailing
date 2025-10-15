@@ -1,4 +1,3 @@
-// components/hero.tsx
 "use client";
 
 import Link from "next/link";
@@ -69,7 +68,8 @@ export function Hero() {
 
           {/* Text block */}
           <div className="text-center lg:text-left">
-            <h1 className="ed-title ed-title-soft font-black mb-6 text-[clamp(2.75rem,6.5vw,6rem)]">
+            {/* drop font-black; Bebas Neue is display-thick already */}
+            <h1 className="ed-title ed-title-soft mb-6 text-[clamp(2.75rem,6.5vw,6rem)]">
               ELITE DETAILING
             </h1>
             <p className="text-2xl md:text-3xl mb-8 text-white/90">

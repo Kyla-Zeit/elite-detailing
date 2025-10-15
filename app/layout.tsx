@@ -5,6 +5,11 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
+
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-title" });
 
 export const metadata: Metadata = {
   title: "Elite Detailing - Premium Mobile Car Care Services",

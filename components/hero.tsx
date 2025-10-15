@@ -9,22 +9,23 @@ import type { CSSProperties } from "react";
 import { Ultra } from "next/font/google";
 const ultra = Ultra({ weight: "400", subsets: ["latin"] });
 
-import LogoMark from "@/public/logot1.png"; // transparent logo
+import LogoMark from "@/public/logot1.png"; // transparent logo (used as mask)
 import LogoBg from "@/public/bg2.png";     // background artwork
 
 // === Quick knobs ===
-const COVER_SCALE = 1.2;   // background zoom to avoid edges on ultra-wide
-const BG_OPACITY  = 0.36;  // visibility of the background image
-const LOGO_OPACITY = 0.9; // logo accent, a touch quieter
+const COVER_SCALE = 1.2;      // background zoom to avoid edges on ultra-wide
+const BG_OPACITY  = 0.36;     // visibility of the background image
+const LOGO_OPACITY = 0.28;    // 0 = invisible, 1 = solid (neon)
+const NEON = "#00ff88";       // same as title color
 
 export function Hero() {
-  // Legibility overlay with a faint brand tint (darker so the title pops)
+  // Legibility overlay with faint brand tint
   const overlay: CSSProperties = {
     background:
       "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.05), rgba(0,0,0,0.52) 60%, rgba(0,0,0,0.78))"
   };
 
-  // Inject Ultra only for the H1 via a CSS var consumed by .ed-title
+  // Inject Ultra on the H1 only
   const titleFontVar = { ["--font-title" as any]: ultra.style.fontFamily } as CSSProperties;
 
   return (
@@ -51,25 +52,32 @@ export function Hero() {
       {/* Overlay for readability */}
       <div aria-hidden className="absolute inset-0" style={overlay} />
 
-      {/* ===== CONTENT: SIDE VARIANT ===== */}
+      {/* ===== CONTENT: SIDE VARIANT with NEON-MASKED LOGO ===== */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-2">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,38%)_1fr] items-center gap-8 lg:gap-12">
-          {/* Logo to the side on large screens, below on mobile */}
+          {/* Neon logo to the side on large screens, below on mobile */}
           <div className="order-last lg:order-first justify-self-center lg:justify-self-end">
-            <Image
-              src={LogoMark}
-              alt=""
-              priority
-              width={520}
-              height={520}
+            <div
+              aria-hidden
               className="pointer-events-none select-none"
               style={{
                 width: "min(44vw, 520px)",
-                height: "auto",
-                opacity: LOGO_OPACITY,
-                filter:
-                  "saturate(0.65) brightness(1.02) drop-shadow(0 8px 24px rgba(0,255,136,.2))",
-              }}
+                aspectRatio: "1 / 1",
+                backgroundColor: NEON,                 // the neon paint
+                opacity: LOGO_OPACITY,                  // tweak intensity
+                // Use the PNG as an alpha mask so fill becomes pure neon
+                WebkitMaskImage: `url(${LogoMark.src})`,
+                maskImage: `url(${LogoMark.src})`,
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                // gentle glow
+                filter: "drop-shadow(0 0 22px rgba(0,255,136,.28)) drop-shadow(0 0 48px rgba(0,255,136,.18))",
+                // optional: mixBlendMode: "screen" as any,
+              } as CSSProperties}
             />
           </div>
 

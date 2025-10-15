@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
 
 // basePath-safe import so it works on GitHub Pages
-import LogoBg from "@/public/logo2.png";
+import LogoBg from "@/public/bg1.png";
 
 export function Hero() {
   // background: giant centered logo, no photo nonsense

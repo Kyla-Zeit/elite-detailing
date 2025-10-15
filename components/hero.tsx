@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
-import LogoMark from "@/public/logo2.png";   // <- logo behind the title
+import LogoMark from "@/public/logot1.png";   // <- logo behind the title
 import LogoBg from "@/public/bg2.png";       // background artwork
 
 /**

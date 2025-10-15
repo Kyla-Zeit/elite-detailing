@@ -15,7 +15,7 @@ import LogoBg from "@/public/bg2.png";
  * - BG_OPACITY: how visible the artwork is behind the overlay.
  */
 const COVER_SCALE = 1.25; // 1.0 = exact cover, 1.25 = zoom-in a touch
-const BG_OPACITY = 0.40;  // 0.06–0.40 depending how loud you want it
+const BG_OPACITY = 0.;  // 0.06–0.40 depending how loud you want it
 
 export function Hero() {
   // Legibility overlay with a faint brand tint
@@ -39,11 +39,11 @@ export function Hero() {
           // Cover = fill the area completely, cropping as needed (no letterboxing)
           className="object-cover"
           // Make the lines pop a bit and scale to avoid edges showing on ultra-wide
-          style={{
-            opacity: BG_OPACITY,
-            transform: `scale(${COVER_SCALE})`,
-            filter: "brightness(1.35) contrast(1.35) saturate(1.1)",
-          }}
+style={{
+  opacity: BG_OPACITY,
+  transform: `scale(${COVER_SCALE})`,
+  filter: "brightness(1.5) contrast(1.25) saturate(1.15)" // was 1.35/1.35/1.1
+}}
         />
       </div>
 

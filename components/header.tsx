@@ -2,11 +2,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
-
-import LogoPng from "@/public/logo2.png";   // must be TRANSPARENT for this option
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,35 +24,24 @@ export function Header() {
     { href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact" }
   ];
-  
+
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "py-3 md:py-4" : "py-4 md:py-5"
+      className={`fixed top-0 w-full z-50 transition-all duration-300
+      ${isScrolled
+        ? "py-5 md:py-6 bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+        : "py-6 md:py-7 bg-gradient-to-b from-black/70 to-black/45 backdrop-blur-md border-b border-white/5"
       }`}
-
     >
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between">
-          {/* Brand: raw logo only */}
-          <Link href="#home" className="flex items-center gap-3">
-            <Image
-              src={LogoPng}
-              alt="Elite Detailing Logo"
-              width={50}
-              height={50}
-              className="rounded-none" // or rounded if you really want
-              priority
-            />
-          </Link>
-
-          {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-8">
+      <div className="container mx-auto px-4 md:px-8 relative">
+        <div className="flex items-center justify-center">
+          {/* Desktop Nav (centered) */}
+          <ul className="hidden md:flex items-center gap-10">
             {navlinks.map(link => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white/90 hover:text-[#00ff88] transition-colors"
+                  className="text-white/90 text-lg tracking-wide hover:text-[#00ff88] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -63,31 +49,30 @@ export function Header() {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (right) */}
           <button
             aria-label="Open Menu"
             onClick={() => setIsMenuOpen(p => !p)}
-            className="md:hidden p-2 rounded-lg border border-white/10 text-white/90"
+            className="md:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-lg border border-white/10 text-white/90"
           >
-            <Menu size={22} />
+            <Menu size={24} />
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${
-          isMenuOpen ? "max-h-96" : "max-h-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-[max-height] duration-300
+        ${isMenuOpen ? "max-h-96" : "max-h-0"}`}
       >
-        <nav className="container mx-auto px-4 py-2">
-          <ul className="flex flex-col divide-y divide-white/10">
+        <nav className="container mx-auto px-4 py-3">
+          <ul className="flex flex-col divide-y divide-white/10 rounded-xl bg-black/85 backdrop-blur-xl border border-white/10">
             {navlinks.map(link => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block py-3 text-white/90 hover:text-[#00ff88] transition-colors"
+                  className="block py-3.5 px-3 text-white/90 text-base hover:text-[#00ff88] transition-colors"
                 >
                   {link.label}
                 </Link>

@@ -5,9 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
-
-// Square logo artwork on black
-import LogoBg from "@/public/bg2.png";
+import LogoMark from "@/public/logo2.png";   // <- logo behind the title
+import LogoBg from "@/public/bg2.png";       // background artwork
 
 /**
  * Tweak these without touching the rest of the code.
@@ -19,10 +18,10 @@ const BG_OPACITY = 0.40;  // 0.06–0.40 depending how loud you want it
 
 export function Hero() {
   // Legibility overlay with a faint brand tint
-const overlay: CSSProperties = {
-  background:
-    "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.08), rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.72))"
-};
+  const overlay: CSSProperties = {
+    background:
+      "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.08), rgba(0,0,0,0.40) 60%, rgba(0,0,0,0.72))"
+  };
 
   return (
     <section
@@ -36,9 +35,7 @@ const overlay: CSSProperties = {
           alt=""
           priority
           fill
-          // Cover = fill the area completely, cropping as needed (no letterboxing)
           className="object-cover"
-          // Make the lines pop a bit and scale to avoid edges showing on ultra-wide
           style={{
             opacity: BG_OPACITY,
             transform: `scale(${COVER_SCALE})`,
@@ -52,12 +49,26 @@ const overlay: CSSProperties = {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">
-<h1
-  className="ed-title font-black mb-6 drop-shadow-none
-             text-[clamp(2.75rem,6.5vw,6rem)]"
->
-  ELITE DETAILING
-</h1>
+        {/* Title with logo layered behind it */}
+        <div className="relative inline-block mx-auto">
+          <Image
+            src={LogoMark}
+            alt=""
+            priority
+            width={900}
+            height={900}
+            sizes="(min-width: 1024px) 52vw, 70vw"
+            className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-2deg] opacity-60 [filter:drop-shadow(0_6px_28px_rgba(0,255,136,.35))]"
+            style={{ width: "min(900px, 52vw)", height: "auto" }}
+          />
+
+          <h1
+            className="relative ed-title font-black mb-6 drop-shadow-none
+                       text-[clamp(2.75rem,6.5vw,6rem)]"
+          >
+            ELITE DETAILING
+          </h1>
+        </div>
 
         <p className="text-2xl md:text-3xl mb-8 text-white/90">
           Premium Mobile Car Care Services

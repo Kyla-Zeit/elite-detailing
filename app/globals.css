@@ -151,28 +151,22 @@
   section[id] { scroll-margin-top: 5.5rem; }
 }
 
-/* === Elite Detailing title style === */
+/* === Elite Detailing title style (Bebas Neue) === */
 .ed-title {
-  /* Bevan if you have it, otherwise Rockwell/serif slab-ish */
-  font-family: "Bevan", "Rockwell", "Rockwell Extra Bold", "Serifa", serif;
-  /* ALL CAPS and slightly tight tracking */
+  font-family: var(--font-title), "Anton", "Impact", system-ui, sans-serif;
   text-transform: uppercase;
-  letter-spacing: -0.02em; /* ≈ -2% */
-  /* Neon lime fill */
+  letter-spacing: 0.01em;        /* slight positive spacing suits condensed faces */
   color: #00ff88;
-  /* Dark teal/green shadow a few px down-right + soft glow */
   text-shadow:
-    0 4px 0 rgba(0, 61, 47, 0.95),       /* hard offset shadow */
-    0 0 22px rgba(0, 255, 136, 0.35),    /* outer glow */
-    0 0 48px rgba(0, 255, 136, 0.22);    /* wider glow */
-  /* Thin darker outline to punch off black */
-  -webkit-text-stroke: 1px rgba(0, 61, 47, 0.65);
-  text-stroke: 1px rgba(0, 61, 47, 0.65); /* non-standard, harmless fallback */
-  /* Compact line-height keeps the slab tight */
-  line-height: 0.95;
+    0 3px 0 rgba(0, 61, 47, 0.75),
+    0 0 14px rgba(0, 255, 136, 0.22),
+    0 0 30px rgba(0, 255, 136, 0.16);
+  -webkit-text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  line-height: 0.94;
 }
 
-/* Softer version of the hero title */
+/* Softer version of the hero title (kept for compatibility) */
 .ed-title-soft {
   text-shadow:
     0 3px 0 rgba(0, 61, 47, 0.75),

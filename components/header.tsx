@@ -27,14 +27,16 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300
+      className={`fixed top-0 w-full z-50 border-b
+      transition-[background,box-shadow,backdrop-filter] duration-300
       ${isScrolled
-        ? "py-5 md:py-6 bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
-        : "py-6 md:py-7 bg-gradient-to-b from-black/70 to-black/45 backdrop-blur-md border-b border-white/5"
+        ? "bg-black/80 backdrop-blur-xl border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+        : "bg-gradient-to-b from-black/70 to-black/45 backdrop-blur-md border-white/10"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-8 relative">
-        <div className="flex items-center justify-center">
+      <div className="container mx-auto px-4 md:px-8">
+        {/* Lock the header height so nothing shifts */}
+        <div className="h-16 md:h-20 flex items-center justify-center">
           {/* Desktop Nav (centered) */}
           <ul className="hidden md:flex items-center gap-10">
             {navlinks.map(link => (

@@ -44,30 +44,28 @@ export function Hero() {
       {/* Overlay for readability */}
       <div aria-hidden className="absolute inset-0" style={overlay} />
 
-      {/* ===== CONTENT: BEHIND_SOFT VARIANT ===== */}
-      <div className="relative z-10 mx-auto max-w-4xl">
-        {/* Softer, smaller logo behind the title */}
-        <div className="relative inline-block">
-          <Image
-            src={LogoMark}
-            alt=""
-            priority
-            width={760}
-            height={760}
-            className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40"
-            style={{
-              width: "min(72vw, 760px)",
-              height: "auto",
-              filter:
-                "saturate(0.55) brightness(1.0) contrast(1.05) drop-shadow(0 6px 24px rgba(0,255,136,.22))",
-              mixBlendMode: "soft-light",
-            }}
-          />
-          <h1 className="relative ed-title ed-title-soft font-black mb-6 text-[clamp(2.75rem,6.5vw,6rem)]">
-            ELITE DETAILING
-          </h1>
-        </div>
+      {/* ===== CONTENT: CORNER VARIANT ===== */}
+      {/* Quiet watermark in the corner, above overlay but behind content */}
+      <Image
+        src={LogoMark}
+        alt=""
+        priority
+        width={540}
+        height={540}
+        className="pointer-events-none select-none absolute right-[6%] bottom-[8%]"
+        style={{
+          width: "min(40vw, 420px)",
+          height: "auto",
+          opacity: 0.22,
+          filter: "saturate(0.6) brightness(1.0) drop-shadow(0 8px 24px rgba(0,255,136,.2))",
+          mixBlendMode: "soft-light" as any
+        }}
+      />
 
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <h1 className="ed-title ed-title-soft font-black mb-6 text-[clamp(2.75rem,6.5vw,6rem)]">
+          ELITE DETAILING
+        </h1>
         <p className="text-2xl md:text-3xl mb-8 text-white/90">
           Premium Mobile Car Care Services
         </p>

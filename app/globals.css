@@ -123,3 +123,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* === Elite Detailing title style === */
+.ed-title {
+  /* Bevan if you have it, otherwise Rockwell/serif slab-ish */
+  font-family: "Bevan", "Rockwell", "Rockwell Extra Bold", "Serifa", serif;
+
+  /* ALL CAPS and slightly tight tracking */
+  text-transform: uppercase;
+  letter-spacing: -0.02em; /* ≈ -2% */
+
+  /* Neon lime fill */
+  color: #00ff88;
+
+  /* Dark teal/green shadow a few px down-right + soft glow */
+  text-shadow:
+    0 4px 0 rgba(0, 61, 47, 0.95),       /* hard offset shadow */
+    0 0 22px rgba(0, 255, 136, 0.35),    /* outer glow */
+    0 0 48px rgba(0, 255, 136, 0.22);    /* wider glow */
+
+  /* Thin darker outline to punch off black */
+  -webkit-text-stroke: 1px rgba(0, 61, 47, 0.65);
+  text-stroke: 1px rgba(0, 61, 47, 0.65); /* non-standard, harmless fallback */
+
+  /* Compact line-height keeps the slab tight */
+  line-height: 0.95;
+}

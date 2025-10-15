@@ -52,9 +52,13 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-[#00ff88] tracking-wider uppercase drop-shadow-[0_0_30px_rgba(0,255,136,0.7)]">
-          ELITE DETAILING
-        </h1>
+<h1
+  className="ed-title font-black mb-6 drop-shadow-none
+             text-[clamp(2.75rem,6.5vw,6rem)]"
+>
+  ELITE DETAILING
+</h1>
+
         <p className="text-2xl md:text-3xl mb-8 text-white/90">
           Premium Mobile Car Care Services
         </p>

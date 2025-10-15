@@ -1,9 +1,13 @@
+// components/hero.tsx
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
+
+import { Ultra } from "next/font/google";
+const ultra = Ultra({ weight: "400", subsets: ["latin"] });
 
 import LogoMark from "@/public/logot1.png"; // transparent logo
 import LogoBg from "@/public/bg2.png";     // background artwork
@@ -19,6 +23,9 @@ export function Hero() {
     background:
       "radial-gradient(ellipse at 50% 42%, rgba(0,255,136,0.05), rgba(0,0,0,0.52) 60%, rgba(0,0,0,0.78))"
   };
+
+  // Inject Ultra just for the H1 by setting --font-title on the element
+  const titleFontVar = { ["--font-title" as any]: ultra.style.fontFamily } as CSSProperties;
 
   return (
     <section
@@ -68,8 +75,10 @@ export function Hero() {
 
           {/* Text block */}
           <div className="text-center lg:text-left">
-            {/* drop font-black; Bebas Neue is display-thick already */}
-            <h1 className="ed-title ed-title-soft mb-6 text-[clamp(2.75rem,6.5vw,6rem)]">
+            <h1
+              style={titleFontVar}
+              className="ed-title ed-title-soft mb-6 text-[clamp(2.75rem,6.5vw,6rem)]"
+            >
               ELITE DETAILING
             </h1>
             <p className="text-2xl md:text-3xl mb-8 text-white/90">

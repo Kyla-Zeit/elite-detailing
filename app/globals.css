@@ -171,3 +171,14 @@
   /* Compact line-height keeps the slab tight */
   line-height: 0.95;
 }
+
+/* Softer version of the hero title */
+.ed-title-soft {
+  /* scale back the glow and outline compared to .ed-title defaults */
+  text-shadow:
+    0 3px 0 rgba(0, 61, 47, 0.75),
+    0 0 14px rgba(0, 255, 136, 0.22),
+    0 0 30px rgba(0, 255, 136, 0.16);
+  -webkit-text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+  text-stroke: 0.5px rgba(0, 61, 47, 0.5);
+}

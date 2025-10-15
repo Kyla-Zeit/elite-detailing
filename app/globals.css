@@ -143,27 +143,4 @@
   text-stroke: 1px rgba(0, 61, 47, 0.65); /* non-standard, harmless fallback */
   /* Compact line-height keeps the slab tight */
   line-height: 0.95;
-
-    position: relative;
-  /* quick knobs */
-  --logo-size: clamp(260px, 52vw, 900px);
-  --logo-opacity: 0.55;       /* 0.35–0.75 */
-  --logo-rotate: -2deg;        /* subtle tilt, optional */
-  --logo-y: -6%;               /* nudge up/down */
-}
-
-.ed-title::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: var(--logo-size);
-  aspect-ratio: 1 / 1;
-  transform: translate(-50%, -50%) rotate(var(--logo-rotate)) translateY(var(--logo-y));
-  background: url("@/public/logo2.png") center / contain no-repeat;
-  opacity: var(--logo-opacity);
-  filter: drop-shadow(0 6px 28px rgba(0, 255, 136, 0.35));
-  pointer-events: none;
-  z-index: -1;                 /* behind the text, still above the overlay */
-  mix-blend-mode: normal;      /* try 'screen' if you want extra glow */
 }

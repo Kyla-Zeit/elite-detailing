@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
 
-import LogoMark from "@/public/logo2.png"; // transparent logo
+import LogoMark from "@/public/logot1.png"; // transparent logo
 import LogoBg from "@/public/bg2.png";     // background artwork
 
 // === Quick knobs ===

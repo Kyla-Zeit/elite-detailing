@@ -26,7 +26,7 @@ export function Hero() {
   // Ultra for the H1 only
   const titleFontVar = { ["--font-title" as any]: ultra.style.fontFamily } as CSSProperties;
 
-  // Shared mask styles for both glow and base layers
+  // Shared mask styles
   const maskBase: CSSProperties = {
     WebkitMaskImage: `url(${LogoMask.src})`,
     maskImage: `url(${LogoMask.src})`,
@@ -36,7 +36,7 @@ export function Hero() {
     maskRepeat: "no-repeat",
     WebkitMaskPosition: "center",
     maskPosition: "center",
-    backgroundColor: "var(--brand-neon)", // exact same color as title
+    backgroundColor: "var(--brand-neon)", // match headline color
     position: "absolute",
     inset: 0,
     mixBlendMode: "screen",
@@ -67,32 +67,26 @@ export function Hero() {
       <div aria-hidden className="absolute inset-0" style={overlay} />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-2">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-2 mt-20 sm:mt-24 md:mt-0">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,38%)_1fr] items-center gap-8 lg:gap-12">
-          {/* NEON LOGO (two layers: glow + crisp) */}
-          <div className="order-last lg:order-first justify-self-center lg:justify-self-end">
-            <div
-              className="relative pointer-events-none select-none"
-              style={{
-                width: "min(44vw, 520px)",
-                aspectRatio: "1 / 1",
-              }}
-            >
-              {/* Glow layer */}
+          {/* Logo on the side (desktop only) */}
+          <div className="hidden lg:block justify-self-end">
+            <div className="relative pointer-events-none select-none" style={{ width: "min(44vw, 520px)", aspectRatio: "1 / 1" }}>
+              {/* Glow */}
               <div
                 aria-hidden
                 style={{
                   ...maskBase,
-                  opacity: "var(--hero-logo-glow, .38)", // stronger visibility knob
+                  opacity: "var(--hero-logo-glow, .38)",
                   filter: "blur(10px) brightness(1.35) saturate(1.1)",
                 }}
               />
-              {/* Crisp layer */}
+              {/* Crisp */}
               <div
                 aria-hidden
                 style={{
                   ...maskBase,
-                  opacity: "var(--hero-logo-opacity, .55)", // main intensity knob
+                  opacity: "var(--hero-logo-opacity, .55)",
                   filter: "drop-shadow(0 0 14px rgba(0,255,136,.24))",
                 }}
               />
@@ -103,10 +97,38 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <h1
               style={titleFontVar}
-              className="ed-title ed-title-muted mb-6 text-[clamp(2.25rem,5.2vw,5rem)]"
+              className="ed-title ed-title-muted mb-4 md:mb-6 text-[clamp(2.25rem,5.2vw,5rem)]"
             >
               ELITE DETAILING
             </h1>
+
+            {/* Mobile logo directly under the title */}
+            <div className="lg:hidden mx-auto mb-6">
+              <div
+                className="relative pointer-events-none select-none mx-auto"
+                style={{ width: "min(78vw, 360px)", aspectRatio: "1 / 1" }}
+              >
+                {/* Glow */}
+                <div
+                  aria-hidden
+                  style={{
+                    ...maskBase,
+                    opacity: "var(--hero-logo-glow, .42)",
+                    filter: "blur(8px) brightness(1.35) saturate(1.1)",
+                  }}
+                />
+                {/* Crisp */}
+                <div
+                  aria-hidden
+                  style={{
+                    ...maskBase,
+                    opacity: "var(--hero-logo-opacity, .65)",
+                    filter: "drop-shadow(0 0 12px rgba(0,255,136,.22))",
+                  }}
+                />
+              </div>
+            </div>
+
             <p className="text-2xl md:text-3xl mb-8 text-white/90">
               Premium Mobile Car Care Services
             </p>
